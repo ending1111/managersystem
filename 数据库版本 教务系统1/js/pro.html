@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="jquery-1.9.1.min.js" type="text/javascript">  </script>
+		<script type="text/javascript">
+			$(function(){
+				document.querySelector("form").style.display="none";
+				initTable()
+			})
+			function initTable(){
+				// http://47.102.158.74:8080/Project/SelectStudent
+				// http://localhost:8080/ProjectTwoTables/SelectStudent
+				$.getJSON("http://localhost:8080/ProjectTwoTables/SelectStudent",{},function(data){
+					var tbody= $("tbody")
+					tbody.html("")
+					$(data).each(function(){
+						tbody.append("<tr>")
+						tbody.append("<td>"+this.id+"</td>")
+						tbody.append("<td>"+this.name+"</td>")
+						tbody.append("<td>"+this.pwd+"</td>")
+						tbody.append("<td><img src='img/"+this.img+".jpg' heigth='40px' width='80px'></td>")
+						tbody.append("<td>"+this.cinfo.cname+"</td>")
+						tbody.append("<td><a href='javascript:deleteStudentById("+this.id+")'>删除</a></td>");
+						tbody.append("<td><a href='javascript:updateStudentById("+this.id+")' >修改</a></td>");
+						tbody.append("</tr>")
+					})
+				})
+			}
+			 function addStudent(){
+				 document.querySelector("form").style.display="block";
+				$.post("http://localhost:8080/ProjectTwoTables/addStudent",
+				$("form").serialize(),
+				function(data){
+					if(data)
+					initTable()
+					else
+					alert("错误！")
+				})
+			}
+			 function deleteStudentById(id){
+				 
+				$.get("http://localhost:8080/ProjectTwoTables/deleteStudent",{"id":id},function(data){
+					if(data)
+						initTable()
+					else
+						alert("异常！")
+				})
+			}
+			 function updateStudentById(id){
+				document.querySelector("form").style.display="block";
+				$("#id").val(id);
+				//okupdate();
+				}
+			 function okupdate(){
+				 $.get("http://localhost:8080/ProjectTwoTables/updateStudent",$("form").serialize(),function(data){
+				initTable();
+				 })
+			 } 
+				 
+			 
+			 
+		</script>
+	</head>
+	<body>
+		
+		<form >
+			<input type="text" name="name" id="name"  />
+			<input type="text" name="pwd"  id="pwd" />
+			<input type="text" name="img" id="name"  />
+			<input type="text" name="classes"  id="pwd" />
+			<input type="hidden" name="id" id="id" />
+			<input type="button" onclick="addStudent() " value="添加" />
+			<input type="button" onclick="okupdate()" value="保存" />
+				
+				<br>
+			
+		</form>
+
+		<table>	
+			<tbody>
+				
+			</tbody>
+			</table>
+	</body>
+</html>

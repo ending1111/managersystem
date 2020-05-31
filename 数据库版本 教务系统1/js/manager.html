@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="css.css" type="text/css" media="all">
+		<script src="jquery-1.9.1.min.js" type="text/javascript"></script>
+		<link href="https://cdn.bootcdn.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+		<script src="tools.js" type="text/javascript"></script>
+		<script src="bean.js" type="text/javascript"></script>
+		<script src="database.js" type="text/javascript"></script>
+		<script src="manager.js" type="text/javascript"></script>
+		<style type="text/css">
+			.current{
+	BORDER-RIGHT: #b2e05d 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #b2e05d 1px solid; PADDING-LEFT: 5px; FONT-WEIGHT: bold; PADDING-BOTTOM: 2px; BORDER-LEFT: #b2e05d 1px solid; COLOR: #fff; MARGIN-RIGHT: 2px; PADDING-TOP: 2px; BORDER-BOTTOM: #b2e05d 1px solid; BACKGROUND-COLOR: #b2e05d
+}
+		</style>
+	</head>
+	<body>
+		<h1>学生管理系统</h1>
+		
+		<!-- <a href='#' class="current">aa</a> -->
+		<div id="div0"></div>
+		
+		<table  class="table" align="center">
+			<caption><a href="javascript:add()">添加操作</a></caption>
+			<thead>
+				<tr>
+					<td>编号</td>
+					<td>姓名</td>
+					<td>密码</td>
+					<td>地址</td>
+					<td>性别</td>
+					<td>电话</td>
+					<td>图片</td>
+					<td>班级</td>
+					<td>操作</td>
+				</tr>
+			</thead>
+
+			<tbody>
+
+			</tbody>
+		</table>
+		<div id="add" style="display: none;">
+			<form id="addStudent1" >
+				<table>
+					<tr>
+						<td>编号:</td>
+						<td><input type="text" readonly id="id" name="id" /></td>
+					</tr>
+					<tr>
+						<td>姓名：</td>
+						<td><input type="text" id="name" name="name" /></td>
+					</tr>
+					<tr>
+						<td>密码：</td>
+						<td><input type="password" id="pwd" name="pwd" /></td>
+					</tr>
+					<tr>
+						<td>电话：</td>
+						<td><input type="text" id="tel" name="tel"> </td>
+					</tr>
+					<tr>
+						<td>地址</td>
+						<td>
+							<select id="address" name="address">
+								<option value="荆门">荆门</option>
+								<option value="荆州">荆州</option>
+								<option value="武汉">武汉</option>
+								<option value="宁夏">宁夏</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>性别：</td>
+						<td><input type="radio" name="sex" value="男" />男
+							<input type="radio" name="sex" value="女" />女
+						</td>
+
+					</tr>
+					<tr>
+						<td>图片：</td>
+						<td>
+							<select id="img" name="img">
+								<option value="1">图1</option>
+								<option value="2">图2</option>
+								<option value="3">图3</option>
+								<option value="4">图4</option>
+								<option value="5">图5</option>
+								<option value="6">图6</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>班级：</td>
+						<td>
+							<select id="classid" name="classid">
+								<option value="1">一班</option>
+								<option value="2">二班</option>
+								<option value="3">三班</option>
+								<option value="4">四班</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="button" id="btn1" onclick="addStudent()" value="添加" /></td>
+						<td><input type="button" id="btn2" onclick="closeWin()" value="取消" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</body>
+</html>
